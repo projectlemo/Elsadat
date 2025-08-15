@@ -1,5 +1,3 @@
-
-/* Bilingual switch with persistence */
 const I18N={
  en:{title:"Sadat Academy For Management Science",
      nav:{home:"Home",rules:"Publication Rules",board:"Editorial Board",current:"Current Issue",archive:"Archive",login:"Login"},
