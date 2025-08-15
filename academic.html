@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Academic Information</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="script.js" defer></script>
+</head>
+
+<header class="header">
+  <div class="header-content">
+    <img src="Elsadat.jpg" alt="Logo" class="header-logo">
+    <h1 id="academy-title" class="header-title">Sadat Academy For Management Science</h1>
+  </div>
+</header>
+
+<nav>
+  <div class="nav-wrap">
+    <div class="nav-links">
+      <a class="link" href="home.html" data-nav="home">Home</a>
+      <a class="link" href="rules.html" data-nav="rules">Publication Rules</a>
+      <a class="link" href="board.html" data-nav="board">Editorial Board</a>
+      <a class="link" href="current.html" data-nav="current">Current Issue</a>
+      <a class="link" href="archive.html" data-nav="archive">Archive</a>
+      <a class="link" href="index.html" data-nav="login">Login</a>
+    </div>
+    <div class="lang-buttons">
+      <button class="lang-btn" onclick="switchLanguage('en')">English</button>
+      <button class="lang-btn" onclick="switchLanguage('ar')">العربية</button>
+    </div>
+  </div>
+</nav>
+
+<main data-page="academic">
+  <section class="card">
+    <h2>Academic Information</h2>
+    <p>Please enter your details below.</p>
+
+    <form class="form academic-form" action="#" method="post" onsubmit="return false;">
+      <div class="form-row">
+        <label for="aid">Academic ID</label>
+        <input type="text" id="aid" name="aid" placeholder="e.g. 234353" required />
+      </div>
+
+      <div class="form-row">
+        <label for="name">Full Name</label>
+        <input type="text" id="name" name="name" placeholder="e.g. Ali Mohamed" required />
+      </div>
+
+      <div class="form-row">
+        <label for="pwd">Password</label>
+        <input type="password" id="pwd" name="pwd" placeholder="********" minlength="6" required />
+      </div>
+
+      <div class="form-row">
+        <label for="dob">Birthdate</label>
+        <input type="date" id="dob" name="dob" required />
+      </div>
+
+      <div class="form-row">
+        <label for="gpa">GPA</label>
+        <input type="number" id="gpa" name="gpa" step="0.01" min="0" max="4" placeholder="e.g. 3.85" required />
+      </div>
+
+      <button class="primary" type="submit">Submit</button>
+    </form>
+  </section>
+</main>
+
+<footer>
+  <div class="footer-social">
+    <a href="https://www.facebook.com/sams.edu.eg/?locale=ar_AR" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+    <a href="https://www.instagram.com/sadatacademy/" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+    <a href="http://sams.edu.eg/" target="_blank" title="Website"><i class="fas fa-globe"></i></a>
+  </div>
+  <div class="footer-bar">&copy; 2025 Sadat Academy For Management Science(Dr Yasser Salah Eldin)</div>
+</footer>
+</html>

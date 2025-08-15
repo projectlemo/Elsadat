@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SAMS - Login</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<header class="header">
+  <div class="header-content">
+    <img src="Elsadat.jpg" alt="Logo" class="header-logo">
+    <h1 id="academy-title" class="header-title">Sadat Academy For Management Science</h1>
+  </div>
+</header>
+  <nav><div class="nav-wrap"><div class="nav-links">
+    <a class="link" href="home.html" data-nav="home">Home</a>
+    <a class="link" href="rules.html" data-nav="rules">Publication Rules</a>
+    <a class="link" href="board.html" data-nav="board">Editorial Board</a>
+    <a class="link" href="current.html" data-nav="current">Current Issue</a>
+    <a class="link" href="archive.html" data-nav="archive">Archive</a>
+    <a class="link" href="index.html" data-nav="login">Login</a>
+  </div>
+  <div class="lang-buttons">
+    <button class="lang-btn" onclick="switchLanguage('en')">English</button>
+    <button class="lang-btn" onclick="switchLanguage('ar')">العربية</button>
+  </div></div></nav>
+<body class="page-login">
+<main>
+
+  <section class="card">
+  <h2 data-i18n="login.heading">Login</h2>
+  <form class="form" id="loginForm">
+    <label for="login_id" data-i18n="login.academicId">Academic ID</label>
+    <input id="login_id" required placeholder="e.g. 234353">
+    <label for="login_pass" data-i18n="login.password">Password</label>
+    <input id="login_pass" type="password" required placeholder="********">
+    <button type="submit" data-i18n="login.submit">Login</button>
+    <p id="login_msg" class="msg"></p>
+  </form>
+
+  <div class="toggle-cta">
+    <span data-i18n="login.noAccount">Don't have an account?</span>
+    <a href="#" id="showReg" data-i18n="login.registerHere">Register here</a>
+  </div>
+
+  <form class="form hidden" id="regForm">
+    <div class="two-col">
+      <div>
+        <label data-i18n="register.fullname">Full Name</label>
+        <input id="reg_name" required>
+      </div>
+      <div>
+        <label data-i18n="register.major">Major</label>
+        <input id="reg_major" required>
+      </div>
+    </div>
+    <div class="two-col">
+      <div>
+        <label data-i18n="register.academicId">Academic ID</label>
+        <input id="reg_id" required>
+      </div>
+      <div>
+        <label data-i18n="register.email">Email</label>
+        <input id="reg_email" type="email" required>
+      </div>
+    </div>
+    <div class="two-col">
+      <div>
+        <label data-i18n="register.password">Password</label>
+        <input id="reg_pass" type="password" minlength="6" required>
+      </div>
+      <div>
+        <label data-i18n="register.phone">Phone Number</label>
+        <input id="reg_phone" required>
+      </div>
+    </div>
+    <button type="submit" data-i18n="register.submit">Create Account</button>
+    <p id="reg_msg" class="msg"></p>
+  </form>
+</section>
+<script>
+
+document.getElementById('showReg').addEventListener('click', function(e){ e.preventDefault(); document.getElementById('regForm').classList.toggle('hidden'); });
+
+
+document.getElementById('loginForm').addEventListener('submit', function(e){
+  e.preventDefault();
+  const id = document.getElementById('login_id').value.trim();
+  const pass = document.getElementById('login_pass').value;
+  const u = getUser(id);
+  const msg = document.getElementById('login_msg');
+  if(!u || u.password !== pass){
+    msg.textContent = (getLang()==='ar'?'بيانات الدخول غير صحيحة.':'Invalid credentials.');
+    msg.className = 'msg error';
+    return;
+  }
+  localStorage.setItem('sams_session', JSON.stringify({ id, name: u.name, major: u.major }));
+  msg.textContent = (getLang()==='ar'?'تم تسجيل الدخول بنجاح.':'Login successful.');
+  msg.className = 'msg success';
+  setTimeout(()=>location.href='home.html',700);
+});
+
+
+document.getElementById('regForm').addEventListener('submit', function(e){
+  e.preventDefault();
+  const user = {
+    name: document.getElementById('reg_name').value.trim(),
+    major: document.getElementById('reg_major').value.trim(),
+    academicId: document.getElementById('reg_id').value.trim(),
+    email: document.getElementById('reg_email').value.trim(),
+    password: document.getElementById('reg_pass').value,
+    phone: document.getElementById('reg_phone').value.trim()
+  };
+  const msg = document.getElementById('reg_msg');
+  const users = JSON.parse(localStorage.getItem('sams_users') || '{}');
+  if(users[user.academicId]){
+    msg.textContent = (getLang()==='ar'?'الرقم الأكاديمي مسجل بالفعل.':'Academic ID already registered.');
+    msg.className = 'msg error';
+    return;
+  }
+  users[user.academicId] = user;
+  localStorage.setItem('sams_users', JSON.stringify(users));
+  msg.textContent = (getLang()==='ar'?'تم إنشاء الحساب. يمكنك الآن تسجيل الدخول.':'Account created. You can now log in.');
+  msg.className = 'msg success';
+  document.getElementById('regForm').reset();
+  document.getElementById('regForm').classList.add('hidden');
+});
+</script>
+</main>
+  
+<footer>
+  <div class="footer-social">
+    <a href="https://www.facebook.com/sams.edu.eg/?locale=ar_AR" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+    <a href="https://www.instagram.com/sadatacademy/" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+    <a href="http://sams.edu.eg/" target="_blank" title="Website"><i class="fas fa-globe"></i></a>
+  </div>
+  <div class="footer-bar">&copy; 2025 Sadat Academy For Management Science(Dr Yasser Salah Eldin)</div>
+</footer>
+</body>
+</body>
+</html>

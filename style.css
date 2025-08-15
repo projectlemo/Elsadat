@@ -1,0 +1,403 @@
+
+*{box-sizing:border-box}
+body { margin:0; font-family:Arial,Helvetica,sans-serif; background:#f5f7fa; }
+a{text-decoration:none}
+/* Header */
+header{background:#007fa1;padding:14px 12px;text-align:center}
+.header-content{display:flex;align-items:center;justify-content:center;gap:14px;color:#fff}
+.logo{height:64px;width:auto;border-radius:8px}
+.academy-name{margin:0;font-size:22px}
+/* Nav */
+nav{background:#063648;display:flex;align-items:center;justify-content:center;gap:0;flex-wrap:wrap}
+nav a{color:#fff;padding:12px 16px;display:block}
+nav a:hover,nav a.active{background:#006f85}
+.lang-buttons{margin-left:auto;padding:8px}
+.lang-buttons button{background:#fff;color:#007fa1;border:0;border-radius:6px;padding:6px 10px;margin-left:8px;cursor:pointer}
+.lang-buttons button:hover{background:#eef6f8}
+/* Social */
+
+
+.social-links a:hover{background:#007fa1}
+/* Main */
+main{max-width:980px;margin:22px auto;padding:0 16px}
+
+.card h2{margin-top:0}
+/* Forms */
+.form{display:flex;flex-direction:column;gap:12px;max-width:480px;margin:auto}
+.form input{padding:10px;border:1px solid #cfd6de;border-radius:6px}
+.form button{background:#007fa1;color:#fff;border:0;border-radius:6px;padding:10px 14px;cursor:pointer}
+.form button:hover{background:#006b88}
+.helper{text-align:center;margin-top:10px}
+.msg{margin-top:8px}
+.msg.success{color:#157347}.msg.error{color:#b02a37}
+/* Footer */
+footer{background:#008db1;color:#fff;text-align:center;padding:12px;margin-top:24px}
+
+
+/* === Dark Blue Theme Updates === */
+header { background-color: #003366 !important; }
+header .academy-name { color: #ffffff !important; }
+footer { background-color: #003366 !important; color: #ffffff !important; }
+
+/* Center nav links; keep them white */
+nav { background-color: #003a66 !important; display: flex; align-items: center; }
+nav .nav-links { display: flex; gap: 0; margin: 0 auto; } /* centered block */
+nav a, nav a.link { color: #ffffff !important; }
+nav a:hover, nav a.active, nav a.link:hover, nav a.link.active { background-color: #00508f !important; }
+nav .lang-buttons { margin-left: 0; padding: 8px; } /* stays on the right by layout if after .nav-links */
+
+/* Welcome box on Home page in dark blue + white text */
+
+body[data-page="home"] .card h2, 
+body[data-page="home"] .card p,
+body[data-page="home"] .card label,
+body[data-page="home"] .card a { color: #ffffff !important; }
+
+
+/* --- Patch: move social icons up into white area --- */
+
+
+/* --- Patch: center header content stronger --- */
+header, .header, .header-content { display: flex; align-items: center; justify-content: center; }
+.header-content { gap: 12px; }
+.header .header-title, .academy-name, #academy-title { text-align: center; }
+
+/* --- Patch: remove register tab spacing */
+nav .nav-links { margin: 0 auto; }
+nav .lang-buttons { margin-left: 8px; }
+
+/* --- Patch: bottom banner image strip --- */
+.bottom-banner { margin-top: 28px; }
+.bottom-banner img { width: 100%; height: 320px; object-fit: cover; border-radius: 8px; box-shadow: 0 2px 12px rgba(0,0,0,.12); }
+
+/* --- Patch: login/register merge styles --- */
+.toggle-cta { text-align:center; margin-top:14px; }
+.hidden { display:none; }
+.form .two-col { display:grid; grid-template-columns: 1fr 1fr; gap:12px; }
+.form .two-col input { width:100%; }
+
+
+/* === Fix: bottom image fills area below footer === */
+html, body { margin:0; font-family:Arial,Helvetica,sans-serif; background:#f5f7fa; }
+body { margin:0; font-family:Arial,Helvetica,sans-serif; background:#f5f7fa; }
+
+/* Ensure footer sits above the background image */
+footer { position: relative; z-index: 2; }
+
+/* Remove any extra white gap at very bottom */
+body { margin:0; font-family:Arial,Helvetica,sans-serif; background:#f5f7fa; }
+
+
+/* Move social icons higher into white area */
+
+
+
+/* Center header content more precisely */
+.header, header, .header-content { display:flex; align-items:center; justify-content:center; }
+.header-content { gap: 12px; }
+
+
+/* === FINAL POLISH === */
+
+/* Consistent centered header + nav with same max-width */
+.header, header { background:#07345c; }
+.topbar-wrap, .nav-wrap { max-width:1200px; margin:0 auto; display:flex; align-items:center; justify-content:center; }
+
+.header-content { display:flex; align-items:center; justify-content:center; gap:12px; padding:10px 12px; }
+.header-content img, .header-logo { height:48px; width:auto; display:block; }
+#academy-title { margin:0; color:#fff; font-weight:700; line-height:1; }
+
+nav { background:#083a66; }
+nav .nav-wrap { justify-content:center; }
+nav .nav-links { display:flex; align-items:center; gap:0; }
+nav .nav-links a, nav a.link { color:#fff; display:flex; align-items:center; height:44px; padding:0 16px; }
+nav .nav-links a.active, nav .nav-links a:hover { background:#0c588d; }
+nav .lang-buttons { margin-left:auto; display:flex; gap:8px; padding:6px 10px; }
+.lang-btn { background:#fff; color:#0b5a84; border:0; border-radius:6px; padding:6px 10px; cursor:pointer; }
+
+/* Social icons: keep within white area and under footer bar */
+
+.footer-bar { position:relative; z-index:3; background:#003366; color:#fff; text-align:center; padding:10px 12px; }
+
+/* Footer filler image immediately below copyright bar */
+
+
+/* Ensure main doesn't create extra gap */
+main { max-width:980px; margin:22px auto 0; padding:0 16px; }
+
+.card h2, .card p { color:#fff; }
+
+
+/* === HEADER ALIGNMENT FIX === */
+header, .header, .header-content {
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.header-content { gap:12px; padding:10px 12px; }
+.header-content img.header-logo { height:48px; width:auto; display:block; }
+#academy-title, .academy-name { margin:0; color:#fff; font-weight:700; line-height:1; }
+
+/* Centered nav with proper vertical alignment */
+nav { background:#083a66; display:flex; align-items:center; justify-content:center; }
+nav .nav-links { display:flex; align-items:center; gap:0; margin:0 auto; }
+nav .nav-links a, nav a.link { color:#fff; display:flex; align-items:center; height:44px; padding:0 16px; }
+nav .nav-links a.active, nav .nav-links a:hover { background:#0c588d; }
+nav .lang-buttons { display:flex; align-items:center; gap:8px; margin-left:auto; padding:6px 10px; }
+.lang-btn { background:#fff; color:#0b5a84; border:0; border-radius:6px; padding:6px 10px; cursor:pointer; }
+
+/* === CONTENT SPACING ABOVE COPYRIGHT === */
+main { max-width:980px; margin:22px auto; padding:0 16px; }
+
+.card h2, .card p { color:#fff; }
+
+
+/* === FOOTER STRUCTURE === */
+footer { margin:0; padding:0; }
+.footer-bar { background:#003366; color:#fff; text-align:center; padding:12px; position:relative; z-index:2; }
+/* Image fills remaining white area neatly */
+
+
+/* Social icons stay in the white area, not over the copyright bar */
+
+
+
+/* Clean footer bar only, no background image */
+.footer-bar{background:#003366;color:#fff;text-align:center;padding:12px;margin-top:22px}
+
+/* Ensure visible breathing room between content and footer */
+main{max-width:980px;margin:22px auto 0;padding:0 16px}
+
+.card h2,.card p{color:#fff}
+
+/* Header + nav alignment */
+.header{background:#07345c}
+.header-content{display:flex;align-items:center;justify-content:center;gap:12px;padding:10px 12px}
+.header-logo{height:48px;width:auto;display:block}
+.header-title,#academy-title{margin:0;color:#fff;line-height:1;font-weight:700}
+nav{background:#083a66;display:flex;align-items:center;justify-content:center}
+nav .nav-links{display:flex;align-items:center;gap:0;margin:0 auto}
+nav .nav-links a{color:#fff;display:flex;align-items:center;height:44px;padding:0 16px}
+nav .nav-links a:hover,nav .nav-links a.active{background:#0c588d}
+nav .lang-buttons{display:flex;align-items:center;gap:8px;margin-left:auto;padding:6px 10px}
+.lang-btn{background:#fff;color:#0b5a84;border:0;border-radius:6px;padding:6px 10px;cursor:pointer}
+
+/* Keep social icons in white area */
+
+
+
+/* --- Footer social icons row (bottom white space) --- */
+.footer-social {
+  display: flex;
+  justify-content: center;
+  gap: 22px;
+  padding: 22px 0 12px;
+}
+.footer-social a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: #0b3c5d;
+  color: #fff;
+  font-size: 26px;
+  text-decoration: none;
+  box-shadow: 0 2px 10px rgba(0,0,0,.15);
+  transition: transform .15s ease, background .15s ease;
+}
+.footer-social a:hover { background: #0e5f8f; transform: translateY(-2px); }
+
+/* Keep footer copyright bar separate and dark blue */
+.footer-bar { background:#003366; color:#fff; text-align:center; padding:12px; margin-top:10px; }
+
+
+/* === Layout: sticky footer at the very bottom === */
+html, body { height: 100%; }
+body { min-height: 100vh; display: flex; flex-direction: column; }
+main { flex: 1 0 auto; }
+
+/* Keep the footer section at the end (icons + copyright) */
+footer { margin-top: auto; }
+
+/* === Home card size & spacing (match other pages) === */
+
+
+/* Optional: ensure general cards don't stretch edge-to-edge */
+
+
+
+/* === Home welcome card spacing & width (prevent overlap with nav) === */
+body[data-page="home"] main { padding-top: 18px; }
+body[data-page="home"] 
+
+/* === Login card larger and more comfortable === */
+body[data-page="login"] 
+body[data-page="login"] .form input,
+body[data-page="login"] .form select,
+body[data-page="login"] .form button {
+  font-size: 14px;
+  height: 40px;
+}
+body[data-page="login"] .form button { height: 42px; }
+
+/* Ensure nav isn't fixed and doesn't overlay content */
+nav { position: relative; z-index: 5; }
+
+
+/* ===== Global: center all main containers and add extra top spacing ===== */
+html, body { height: 100%; }
+body { min-height: 100vh; display: flex; flex-direction: column; }
+main { flex: 1 0 auto; padding-top: 48px !important; } /* pushes content down from nav */
+
+/* Center containers and cards on all pages */
+.container, .card, main > div:first-of-type {
+  max-width: 900px;
+  margin: 40px auto !important;  /* centers and adds vertical breathing room */
+  padding: 20px;
+}
+
+/* First/hero card on each page sits a bit lower */
+main > .card:first-of-type, main > .container:first-of-type {
+  margin-top: 60px !important;
+}
+
+/* Keep footer at the very bottom */
+footer { margin-top: auto; }
+
+
+/* === Consistent card sizing across all pages === */
+.card {
+  width: 100%;
+  max-width: 900px !important;      /* default card width */
+  margin: 48px auto !important;      /* consistent vertical spacing */
+  padding: 22px 24px !important;
+  box-sizing: border-box;
+}
+
+/* Larger login card for readability */
+
+
+/* Comfortable form controls */
+body[data-page="login"] .form input,
+body[data-page="login"] .form select,
+body[data-page="login"] .form button {
+  font-size: 16px;
+  height: 46px;
+}
+body[data-page="login"] .form button { height: 48px; }
+
+/* Ensure inputs stretch neatly */
+.form input, .form select, .form button {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+
+/* === FINAL: Restore original card colors and keep consistent sizes === */
+.card {
+  /* restore original dark-blue card look */
+  background: #0c3a63 !important;
+  color: #ffffff !important;
+  border-radius: 10px;
+  box-shadow: 0 2px 12px rgba(0,0,0,.12);
+}
+.card h2, .card p, .card label { color: #ffffff !important; }
+
+/* Wider login card for better balance */
+
+
+
+/* ===== FINAL OVERRIDE: wider login card ===== */
+body[data-page="login"] .card {
+  width: 100% !important;
+  max-width: 900px !important;   /* make it wider */
+  margin: 48px auto !important;  /* center it consistently */
+  padding: 24px 26px !important;
+  box-sizing: border-box;
+}
+
+/* Inputs/buttons full width on login */
+body[data-page="login"] .form input,
+body[data-page="login"] .form select,
+body[data-page="login"] .form button {
+  width: 100% !important;
+  font-size: 16px !important;
+  height: 46px !important;
+}
+body[data-page="login"] .form button { height: 48px !important; }
+
+
+/* === OVERRIDE: Expand login form to full card width === */
+body[data-page="login"] .form {
+  max-width: 100% !important;
+  width: 100% !important;
+}
+
+/* Ensure login page width applies using body class, since original didn't have data-page */
+body.page-login .card, 
+body.page-login .form, 
+body.page-login main {
+  width: min(100%, 900px) !important;
+  max-width: 900px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+
+/* === Quick-action Cards (Home) === */
+
+
+
+
+
+
+
+
+
+/* === Quick-action Cards (dark blue, above footer) === */
+.info-cards {
+  max-width: 980px;
+  margin: 20px auto 14px;
+  padding: 0 12px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 18px;
+}
+.info-card {
+  background: #0c3a63;
+  color: #fff;
+  border-radius: 14px;
+  box-shadow: 0 6px 18px rgba(0,0,0,.18);
+  padding: 22px 18px;
+  text-align: center;
+}
+.info-card i { font-size: 40px; margin-bottom: 8px; color: #fff; }
+.info-card h3 { margin: 6px 0 8px; font-size: 20px; color: #fff; }
+.info-card p { font-size: 14px; opacity: .95; margin-bottom: 14px; }
+.info-btn {
+  display: inline-block;
+  padding: 10px 16px;
+  border-radius: 10px;
+  background: #ffffff;
+  color: #0b3c5d;
+  font-weight: 600;
+  text-decoration: none;
+  transition: transform .15s ease, box-shadow .2s ease;
+}
+.info-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 18px rgba(0,0,0,.2); }
+
+/* Academic form layout */
+.academic-form .form-row { margin-bottom: 12px; }
+.academic-form label { display:block; margin-bottom: 6px; color: #fff; }
+.academic-form input { width: 100%; height: 42px; font-size: 15px; }
+.academic-form button.primary { 
+  background: #0b718f; 
+  color: #fff; 
+  border: 0; 
+  height: 44px; 
+  border-radius: 8px; 
+  margin-top: 6px;
+}
+.academic-form button.primary:hover { filter: brightness(1.05); }
