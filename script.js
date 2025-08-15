@@ -22,7 +22,7 @@ const I18N={
      register:{heading:"التسجيل",fullname:"الاسم الكامل",major:"التخصص",academicId:"الرقم الأكاديمي",email:"البريد الإلكتروني",password:"كلمة المرور",phone:"رقم الهاتف",submit:"إنشاء حساب"}
  }};
 function getLang(){return localStorage.getItem('lang')||'en';}
-function setLang(l){localStorage.setItem('lang',l);}
+function setLang(l){localStorage.setItem('sams_lang', l);}
 function applyLang(){
  const lang=getLang(),t=I18N[lang]; document.body.dir=(lang==='ar')?'rtl':'ltr';
  const title=document.getElementById('academy-title')||document.querySelector('.academy-name'); if(title) title.textContent=t.title;
