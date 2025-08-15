@@ -47,3 +47,94 @@ function markActive(){ const file=location.pathname.split('/').pop()||'home.html
 function saveUser(u){const users=JSON.parse(localStorage.getItem('sams_users')||'{}');users[u.academicId]=u;localStorage.setItem('sams_users',JSON.stringify(users));}
 function getUser(id){const users=JSON.parse(localStorage.getItem('sams_users')||'{}');return users[id]||null;}
 document.addEventListener('DOMContentLoaded', ()=>{ applyLang(); markActive(); });
+
+// === SAMS: session + logout UI (added by ChatGPT) ===
+function getLang(){ try { return localStorage.getItem('sams_lang') || 'en'; } catch { return 'en'; } }
+function getSession(){ try { return JSON.parse(localStorage.getItem('sams_session')||'null'); } catch { return null; } }
+function setSession(sess){ localStorage.setItem('sams_session', JSON.stringify(sess)); }
+function clearSession(){ localStorage.removeItem('sams_session'); }
+
+function renderAuthUI(){
+  const session = getSession();
+  const loginLink = document.querySelector('[data-nav="login"]');
+  // place logout on the right, inside .lang-buttons if present
+  const slot = document.querySelector('.lang-buttons') || document.querySelector('nav .nav-wrap') || document.querySelector('nav');
+
+  // remove previous render
+  const old = document.getElementById('logoutArea');
+  if (old && old.parentNode) old.parentNode.removeChild(old);
+
+  if (session){
+    if (loginLink) loginLink.style.display = 'none';
+
+    const area = document.createElement('div');
+    area.id = 'logoutArea';
+    area.style.display = 'flex';
+    area.style.alignItems = 'center';
+    area.style.gap = '8px';
+    area.style.marginLeft = '8px';
+
+    const name = document.createElement('span');
+    name.className = 'user-name';
+    name.textContent = session.name ? (session.name.split(' ')[0]) : (getLang()==='ar'?'مستخدم':'User');
+    name.style.color = '#fff';
+    name.style.fontSize = '14px';
+    name.style.opacity = '0.9';
+
+    const btn = document.createElement('button');
+    btn.className = 'logout-btn';
+    btn.title = (getLang()==='ar' ? 'تسجيل الخروج' : 'Logout');
+    btn.innerHTML = '<i class="fa-solid fa-right-from-bracket"></i>';
+    Object.assign(btn.style, { background:'transparent', border:'0', cursor:'pointer', padding:'6px' });
+
+    btn.addEventListener('click', () => {
+      clearSession();
+      if (loginLink) loginLink.style.display = '';
+      renderAuthUI();
+      // return to login page
+      if (!/index\.html$/.test(location.pathname)) {
+        location.href = 'index.html';
+      }
+    });
+
+    area.appendChild(name);
+    area.appendChild(btn);
+    if (slot) slot.appendChild(area);
+  } else {
+    if (loginLink) loginLink.style.display = '';
+  }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  try {
+    renderAuthUI();
+
+    // enhance login form to set session on success
+    const loginForm = document.getElementById('loginForm');
+    if (loginForm){
+      loginForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const id = (document.getElementById('login_id')?.value || '').trim();
+        const pass = (document.getElementById('login_pass')?.value || '').trim();
+        const msg = document.getElementById('login_msg');
+        const u = (typeof getUser === 'function') ? getUser(id) : null;
+
+        if (!id || !pass){
+          if (msg) { msg.textContent = (getLang()==='ar'?'من فضلك أكمل البيانات':'Please fill in all fields'); msg.className='msg error'; }
+          return;
+        }
+
+        if (!u || !u.password || u.password !== pass){
+          if (msg) { msg.textContent = (getLang()==='ar'?'بيانات الدخول غير صحيحة':'Invalid credentials'); msg.className='msg error'; }
+          return;
+        }
+
+        setSession({ id: id, name: u.name || u.fullname || 'User' });
+        if (msg) { msg.textContent = (getLang()==='ar'?'تم تسجيل الدخول بنجاح':'Logged in successfully'); msg.className='msg success'; }
+        // Go to home page
+        setTimeout(()=>{ location.href = 'home.html'; }, 300);
+      });
+    }
+  } catch(e){ console.error('auth ui init failed', e); }
+});
+// === end session + logout UI ===
