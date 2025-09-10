@@ -54,9 +54,7 @@ function clearSession(){ localStorage.removeItem('sams_session'); }
 function renderAuthUI(){
   const session = getSession();
   const loginLink = document.querySelector('[data-nav="login"]');
-  // place logout on the right, inside .lang-buttons if present
   const slot = document.querySelector('.lang-buttons') || document.querySelector('nav .nav-wrap') || document.querySelector('nav');
-
   const old = document.getElementById('logoutArea');
   if (old && old.parentNode) old.parentNode.removeChild(old);
 
@@ -105,7 +103,6 @@ document.addEventListener('DOMContentLoaded', () => {
   try {
     renderAuthUI();
 
-    // enhance login form to set session on success
     const loginForm = document.getElementById('loginForm');
     if (loginForm){
       loginForm.addEventListener('submit', (e) => {
@@ -133,4 +130,4 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   } catch(e){ console.error('auth ui init failed', e); }
 });
-// === end session + logout UI ===
+
