@@ -46,7 +46,6 @@ function saveUser(u){const users=JSON.parse(localStorage.getItem('sams_users')||
 function getUser(id){const users=JSON.parse(localStorage.getItem('sams_users')||'{}');return users[id]||null;}
 document.addEventListener('DOMContentLoaded', ()=>{ applyLang(); markActive(); });
 
-// === SAMS: session + logout UI (added by ChatGPT) ===
 function getLang(){ try { return localStorage.getItem('sams_lang') || 'en'; } catch { return 'en'; } }
 function getSession(){ try { return JSON.parse(localStorage.getItem('sams_session')||'null'); } catch { return null; } }
 function setSession(sess){ localStorage.setItem('sams_session', JSON.stringify(sess)); }
@@ -58,7 +57,6 @@ function renderAuthUI(){
   // place logout on the right, inside .lang-buttons if present
   const slot = document.querySelector('.lang-buttons') || document.querySelector('nav .nav-wrap') || document.querySelector('nav');
 
-  // remove previous render
   const old = document.getElementById('logoutArea');
   if (old && old.parentNode) old.parentNode.removeChild(old);
 
